@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <article>
+        <div class="titlePage">
+            <img src="/img/fuse.png" alt="fuse" width="1280" height="420">
+            <h1>DÉCOUVREZ <span>L'ESPACE</span> </br>
+                COMME JAMAIS </br>
+                AUPARAVANT</h1>
+        </div>
+        <div class="titleArticle">
+            {% if articles|length > 0 %}
+                <h2>Nos articles</h2>
+                <div class="allArticles">
+                    {% for article in articles %}
+                        <a href="{{ path('article_show', {'id': article.id < 10 ? '0'~article.id : article.id, 'slug': article.slug}) }}"
+                           style="text-decoration: none;">
+                            <div class="article">
+                                {% if article.cover %}
+                                    <img src="/img/articles/{{ article.cover }}">
+                                {% else %}
+                                    <img src="/img/logo.png">
+                                {% endif %}
+                                <p>{{ article.title }}<p>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+
+            {% else %}
+                <h2 style="text-align: center;margin-bottom: 20px">Il n'y a aucun article pour le moment</h2>
+            {% endif %}
+            <a href="{{ path('article_new') }}" class="back">
+                <button style="margin: 0 0 20px 0">
+                    New
+                </button>
+            </a>
+        </div>
+    </article>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Article{% endblock %}
+
+{% block body %}
+    <div class="jumbotron" style="background: #E4E6EC">
+        <div class="container">
+            <h1>Edit Article</h1>
+            {{ include('article/_form.html.twig', {'button_label': 'Update'}) }}
+            <div class="row">
+                <div class="col">
+                    {{ include('article/_delete_form.html.twig') }}
+                </div>
+                <div class="col">
+                    <a href="{{ path('article_index') }}">back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

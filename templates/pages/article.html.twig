@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <article>
+        <a href="{{ path('article_index') }}" class="back">
+            <button>
+                Retour
+            </button>
+        </a>
+        <div class="container-article">
+            {% if article.cover %}
+                <img src="/img/articles/{{ article.cover }}" width="1000">
+            {% else %}
+                <img src="/img/logo.png" width="1000">
+            {% endif %}
+            <h1>{{ article.title }}</h1>
+            <p class="content"> {{ article.content }}</p>
+            <p class="date">Publié le {{ article.dateCreated | date('d/m/Y à H\\hi') }}</p>
+        </div>
+        <a href="{{ path('article_edit', {'id': article.id}) }}" class="back">
+            <button style="margin:0 0 30px 16%">
+                Edit
+            </button>
+        </a>
+    </article>
+{% endblock %}
